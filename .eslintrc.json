@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["fsd-architecture-plugin"],
+  "rules": {
+    "fsd-architecture-plugin/path-checker": ["error", { "alias": "@" }],
+    "fsd-architecture-plugin/public-api-imports": [
+      "error",
+      { "alias": "@", "testFilesPatterns": ["**/*.test.ts", "**/*.test.tsx", "**/storeDecorator.tsx"] }
+    ],
+    "fsd-architecture-plugin/layer-imports": [
+      "error",
+      {
+        "alias": "@",
+        "ignoreImportPatterns": ["**/StoreProvider", "**/testing"]
+      }
+    ]
+  }
 }

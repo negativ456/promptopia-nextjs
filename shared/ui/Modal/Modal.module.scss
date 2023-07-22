@@ -1,0 +1,26 @@
+.Modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+.content {
+  max-width: 60%;
+  background: #FFF;
+  color: #000;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.opened {
+  pointer-events: auto;
+  opacity: 1;
+}
