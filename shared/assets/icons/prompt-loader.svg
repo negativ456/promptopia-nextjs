@@ -2,11 +2,9 @@
     role="img"
     width="360"
     height="170"
-    aria-labelledby="loading-aria"
     viewBox="0 0 360 170"
     preserveAspectRatio="none"
 >
-    <title id="loading-aria">Loading...</title>
     <rect
             x="0"
             y="0"

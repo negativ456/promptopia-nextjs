@@ -7,7 +7,7 @@ import { PromptSkeleton } from "@/shared/ui/Skeletons/PromptSkeleton/PromptSkele
 interface PromptListProps {
   prompts?: Prompt[];
   className?: string;
-  onTagClick?: () => void;
+  onTagClick?: (tag: string) => void;
   onDelete?: (id: string) => void;
   onEdit?: () => void;
   isLoading?: boolean;
