@@ -10,8 +10,8 @@ import {
   useSession,
 } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { LiteralUnion } from "next-auth/src/react/types";
-import { BuiltInProviderType } from "next-auth/src/providers";
+import { LiteralUnion } from "next-auth/react/types";
+import { BuiltInProviderType } from "next-auth/providers";
 import { HeaderSkeleton } from "@/shared/ui/Skeletons/HeaderSkeleton/HeaderSkeleton";
 
 export const Navbar = () => {
