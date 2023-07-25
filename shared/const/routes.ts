@@ -18,5 +18,7 @@ export const routes: Record<
   [AppRoutes.CREATE]: () => "/create-prompt",
   [AppRoutes.UPDATE]: (id?: string) => `/update-prompt/${id}`,
   [AppRoutes.PROFILE]: (id?: string, params?: RouteParams) =>
-    `/profile/${id}${params ? `?${params.paramName}=${params.value}` : ""}`,
+    `/profile/${id ?? ""}${
+      params ? `?${params.paramName}=${params.value}` : ""
+    }`,
 };
