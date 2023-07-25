@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { fetchPromptById } from "../../model/service/fetchPromptById";
 import { Loader } from "@/shared/ui/Loader/Loader";
+import { AppRoutes, routes } from "@/shared/const/routes";
 
 interface PromptFormProps {
   promptId?: string;
@@ -51,7 +52,7 @@ export const PromptForm = (props: PromptFormProps) => {
           tag,
         });
       }
-      router.push("/");
+      router.push(routes[AppRoutes.MAIN]());
     } catch (e) {
       console.log(e);
     } finally {
@@ -112,7 +113,10 @@ export const PromptForm = (props: PromptFormProps) => {
           />
         </label>
         <div className={"flex-end mx-3 mb-5 gap-4"}>
-          <Link href={"/"} className={"prompt-gray-500 prompt-sm"}>
+          <Link
+            href={routes[AppRoutes.MAIN]()}
+            className={"prompt-gray-500 prompt-sm"}
+          >
             Cancel
           </Link>
           <button

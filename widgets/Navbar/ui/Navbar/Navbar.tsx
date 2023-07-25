@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { LiteralUnion } from "next-auth/react/types";
 import { BuiltInProviderType } from "next-auth/providers";
 import { HeaderSkeleton } from "@/shared/ui/Skeletons/HeaderSkeleton/HeaderSkeleton";
+import { AppRoutes, routes } from "@/shared/const/routes";
 
 export const Navbar = () => {
   const { data: session, status } = useSession();
@@ -43,14 +44,17 @@ export const Navbar = () => {
 
   return (
     <nav className={"flex-between w-full mb-16 pt-3"}>
-      <Link href={"/"} className={"flex gap-2 flex-center"}>
+      <Link
+        href={routes[AppRoutes.MAIN]()}
+        className={"flex gap-2 flex-center"}
+      >
         <Image src={Logo} width={30} height={30} alt={"logo"} />
         <p className="logo_text">Promptopia</p>
       </Link>
       <div className={"sm:flex hidden"}>
         {session?.user ? (
           <div className={"flex gap-3 md:gap-5"}>
-            <Link className={"black_btn"} href={"/create-prompt"}>
+            <Link className={"black_btn"} href={routes[AppRoutes.CREATE]()}>
               Create post
             </Link>
             <button
@@ -60,7 +64,7 @@ export const Navbar = () => {
             >
               Sign out
             </button>
-            <Link href={"/profile"}>
+            <Link href={routes[AppRoutes.PROFILE]()}>
               <Image
                 src={session?.user.image ?? Logo}
                 width={37}
@@ -102,14 +106,14 @@ export const Navbar = () => {
                 <Link
                   className={"dropdown_link"}
                   onClick={() => setToggleDropdown(false)}
-                  href={"/profile"}
+                  href={routes[AppRoutes.PROFILE]()}
                 >
                   My profile
                 </Link>
                 <Link
                   className={"dropdown_link"}
                   onClick={() => setToggleDropdown(false)}
-                  href={"/create-prompt"}
+                  href={routes[AppRoutes.CREATE]()}
                 >
                   Create prompt
                 </Link>

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { AppRoutes, routes } from "@/shared/const/routes";
 interface PromptProps {
   prompt: Prompt;
   onDelete?: (id: string) => void;
@@ -36,8 +37,11 @@ export const PromptCard = (props: PromptProps) => {
         <Link
           href={
             canEdit
-              ? "/profile"
-              : `/profile/${prompt.creator._id}?name=${prompt.creator.username}`
+              ? routes[AppRoutes.PROFILE]()
+              : routes[AppRoutes.PROFILE](prompt.creator._id, {
+                  paramName: "name",
+                  value: prompt.creator.username,
+                })
           }
           className={
             "flex-1 flex justify-start items-center gap-3 cursor-pointer"
@@ -81,7 +85,7 @@ export const PromptCard = (props: PromptProps) => {
       {canEdit && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <Link
-            href={`/update-prompt/${prompt._id}`}
+            href={routes[AppRoutes.UPDATE](prompt._id)}
             className="font-inter text-sm green_gradient cursor-pointer"
           >
             Edit
